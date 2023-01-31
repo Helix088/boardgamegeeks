@@ -15,6 +15,7 @@ Remove as things get done
 Add notes for things in progress but incomplete during pushes (I guess?)
 
 - Boardgames controller
+
 -- GetAll
 -- GetOne
 -- Post
@@ -33,6 +34,7 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 }
 
 - Reviews controller
+
 -- GetAll
 -- GetOne
 -- Post
@@ -45,6 +47,7 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 }
 
 - Sessions controller
+
 -- GetAll
 -- GetOne
 -- Post
@@ -60,6 +63,7 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 }
 
 - Users controller
+
 -- GetAll
 -- GetOne
 -- Post
