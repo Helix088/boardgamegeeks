@@ -80,3 +80,14 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 
 ### GraphQL
 (George's problem unless anyone decides to take a crack)
+
+express-graphql working with users
+
+need to revisit to get mutations running
+
+need to revisit for:
+--boardgames
+--reviews
+--sessions
+
+need to research apollo-graphql and consider tearing out express-graphql

@@ -5,7 +5,7 @@ const mongodb = require('./db/connect');
 const bodyParser = require('body-parser');
 //graphQL
 const {graphqlHTTP} = require('express-graphql'); 
-// const schema = require('./schema');
+const schema = require('./schema');
 
 
 //Oauth stuff, don't know where to dump it so here it goes
@@ -45,11 +45,11 @@ app.get('/profile', requiresAuth(), (req, res) => {
 
 
 //GraphQL
-// app.use('/graphql', graphqlHTTP({
-//   schema,
-//   pretty: true,
-//   graphiql: true,
-// }));
+app.use('/graphql', graphqlHTTP({
+  schema,
+  pretty: true,
+  graphiql: true,
+}));
 //End GraphQL
 
 
