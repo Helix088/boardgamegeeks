@@ -1,0 +1,34 @@
+
+
+//Users
+GET http://localhost:3000/users/
+//Individuals
+###
+GET http://localhost:3000/users/63d9803e2a15ad2578d9bd44
+
+###
+POST http://localhost:3000/users/
+Content-Type: application/json
+
+{
+  "username": "Rusty Shackleford",
+  "email": "sovereigncitizen1975@freerights.rw"
+}
+
+###
+DELETE http://localhost:3000/users/63d98076d58731ece82f8d13
+
+###
+//With PATCH we don't have to fill every field
+
+//Assignment demands I use 204 but that status won't let me set json messages
+//So don't freak out that we get no message - freak out if we DO
+
+PATCH http://localhost:3000/users/63d98083d58731ece82f8d15
+Content-type: application/json
+
+{
+  "username": "Crusty Shackleford",
+  "email": "leedlehausen@bigchungus.net"
+}
+//End users
