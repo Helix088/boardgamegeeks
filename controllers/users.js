@@ -30,11 +30,6 @@ const getUser = async (req, res, next) => {
 
 const addUser = async (req, res, next) => {
   try {
-    //Reject if there are any missing fields
-    if (!req.body.email || !req.body.username) {
-      //400 means user error - didn't use all values for instance
-      res.status(400).send({ message: 'Content can not be empty!' });
-    }
 
     const user = new User(req.body);
     user.save().then((data) => {
@@ -94,7 +89,7 @@ const getUserByUserlink = async (req, res, next) => {
     console.log("Before attempt to find")
     const user = await User.findOne({ email: req.oidc.user.email });
     console.log("After attempt to find")
-    
+
     if (!user) {
       console.log("No user - cont/users line 39")
       //Rather than freaking out and throwing 404, just send it right back
