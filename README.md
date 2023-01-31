@@ -20,6 +20,17 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 -- Post
 -- Put/Patch
 -- Delete
+{
+  name
+  description
+  No. players
+  Playing time
+  weight
+  category1
+  category2 (optional?)
+  designer1
+  designer2 (optional?)
+}
 
 - Reviews controller
 -- GetAll
@@ -27,6 +38,11 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 -- Post
 -- Put/Patch
 -- Delete
+{
+  boardgame (by id)
+  user (by username) [maybe we pull the whole thing as array for email too?]
+  reviewText
+}
 
 - Sessions controller
 -- GetAll
@@ -34,6 +50,14 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 -- Post
 -- Put/Patch
 -- Delete
+{
+  boardgame (by id)
+  user (by username)
+  players [array]
+  gametime
+  victory (in a PvP game, who won, if PvE, win or lose)
+  notes (optional)
+}
 
 - Users controller
 -- GetAll
@@ -41,6 +65,11 @@ Add notes for things in progress but incomplete during pushes (I guess?)
 -- Post
 -- Put/Patch
 -- Delete
+{
+  username (nickname field of /profiles)
+  email (email field of /profiles)
+}
+(I think we specifically do not want passwords because after all, isn't that what OAuth is about?)
 
 
 -Swagger gen

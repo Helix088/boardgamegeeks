@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 // })
 
 app.get('/profile', requiresAuth(), (req, res) => {
-  console.log(JSON.stringify(req.oidc.user))
+  // console.log(JSON.stringify(req.oidc.user))
   res.send(JSON.stringify(req.oidc.user));
 }) 
 //End OAuth
