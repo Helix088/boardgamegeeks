@@ -91,16 +91,13 @@ const getUserByUserlink = async (req, res, next) => {
     console.log("After attempt to find")
 
     if (!user) {
-      console.log("No user - cont/users line 39")
+      console.log("No user - cont/users line 94")
       //Rather than freaking out and throwing 404, just send it right back
-      next();
     } else {
       console.log("Found user")
+      console.log(user)
       return user;
     }
-    //Rather than returning 200 and stopping, continue instead
-    //This function is only being ran as part of /middleware/userlink after all
-    next();
   } catch (err) {
     console.log("Bad error catch block getUserByUserlink")
     //500 means server error, not user error
@@ -108,28 +105,58 @@ const getUserByUserlink = async (req, res, next) => {
   }
 };
 
+// const addUserByUserlink = async (req, res, next) => {
+//   console.log("Inside addUserByUserlink")
+//   try {
+//     const info = {
+//       username: req.oidc.user.nickname,
+//       email: req.oidc.user.email
+//     };
+//     console.log("Pulled info")
+    
+//     const user = new User(info);
+//     // const user = new User(req.body);
+//     user.save().then((data) => {
+//       //201 means new thing created as opposed to general 200 "everything worked"
+//       res.status(201).send(data);
+//     })
+//     .catch((err) => {
+//       res.status(500).json({message: err.message || 'Error occured creating user.'});
+//     });
+//   } catch (err) {
+//     //500 means server error, not user error
+//     res.status(500).json({message: err.message});
+//   }
+// }
+
 
 const addUserByUserlink = async (req, res, next) => {
+  console.log("Inside addUserByUserlink")
   try {
 
     const info = {
       username: req.oidc.user.nickname,
       email: req.oidc.user.email
     };
-    
+    console.log("Pulled info")
     
     const user = new User(info);
     // const user = new User(req.body);
     user.save().then((data) => {
-      //201 means new thing created as opposed to general 200 "everything worked"
-      res.status(201).send(data);
+      console.log("created:");
+      console.log(user);
+      return user;
     })
     .catch((err) => {
-      res.status(500).json({message: err.message || 'Error occured creating user.'});
+      if (!res.headersSent) {
+        res.status(500).json({message: err.message || 'Error occured creating user.'});
+      }
     });
   } catch (err) {
     //500 means server error, not user error
-    res.status(500).json({message: err.message});
+    if (!res.headersSent) {
+      res.status(500).json({message: err.message});
+    }
   }
 }
 

@@ -22,7 +22,7 @@ const usersController = require('../controllers/users');
 routes.get('/', usersController.getUsers);
 routes.get('/:id', usersController.getUser);
 // routes.get('/:email', usersController.getUserByEmail);
-routes.post('/', usersController.addUser);
+routes.post('/', security.checkLogin, userlink.findUser, userlink.printUsername, usersController.addUser);
 routes.patch('/:id', usersController.editUser);
 routes.delete('/:id', usersController.delUser);
 
