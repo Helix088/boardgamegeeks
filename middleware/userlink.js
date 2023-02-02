@@ -1,7 +1,7 @@
 const usersController = require('../controllers/users');
 
 // The idea of this middleware is to, first, 
-//check their oidc info versus our databse and try to find the corresponding user
+//check their oidc info versus our database and try to find the corresponding user
 //If we cannot find them (i.e. don't exist yet), 
 //we perform a post to create the user, before moving forward
 //finally we keep it moving with next()
