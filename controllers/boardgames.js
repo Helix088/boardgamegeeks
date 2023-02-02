@@ -1,4 +1,3 @@
-const boardgame = require('../models/boardgame');
 const Boardgame = require('../models/boardgame');
 
 const getBoardgames = async (req, res) => {
@@ -15,13 +14,13 @@ const getBoardgame = async (req, res) => {
     //     res.status(400).json('Must use a valid id to find a boardgame.')
     // } // used this with mongodb
     try {
-        const gameId = await Boardgame.findById(req.params.id);
-        if (!gameId) {
+        const game = await Boardgame.findById(req.params.id);
+        if (!game) {
             // 404 means does not exist
             res.status(404).json({ message: "Can't find this boardgame." });
             return 
         }
-        res.status(200).json(user);
+        res.status(200).json(game);
     } catch (err) {
         res.status(500).json({ message: err.message }); // 500 is a server error
     }
@@ -65,7 +64,7 @@ const editBoardgame = async (req, res) => {
             return res.status(404).send("No boardgame found.");
         }
     } catch (err) {
-        res.status(204).send(boardgame);        
+        res.status(204).send(boardgame); // 204 doesn't show success message
     }
 };
 
