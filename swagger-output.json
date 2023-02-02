@@ -26,7 +26,25 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "xXx_vampire_edgelord_xXx"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "leedler1994@hotmail.net"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -68,6 +86,23 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "xXx_vampire_edgelord_xXx"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "leedler1994@hotmail.net"
+                }
+              }
+            }
           }
         ],
         "responses": {
