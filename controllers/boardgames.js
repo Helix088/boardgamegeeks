@@ -34,7 +34,7 @@ const addBoardgame = async (req, res) => {
             res.status(201).send(data);
         })
         .catch((err) => {
-            res.status(500).json({ message: err.messsage || 'Error occured creating boardgame.' });
+            res.status(500).json({ message: err.message || 'Error occured creating boardgame.' });
         });        
     } catch (err) {
         res.status(500).json({ message: err.message });
