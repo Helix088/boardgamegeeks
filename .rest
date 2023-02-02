@@ -6,6 +6,12 @@ GET http://localhost:3000/users/
 ###
 GET http://localhost:3000/users/63d9803e2a15ad2578d9bd44
 
+### Reviews
+GET http://localhost:3000/reviews/
+
+### Individual Review
+GET http://localhost:3000/reviews/
+
 ###
 POST http://localhost:3000/users/
 Content-Type: application/json
@@ -13,6 +19,17 @@ Content-Type: application/json
 {
   "username": "Rusty Shackleford",
   "email": "sovereigncitizen1975@freerights.rw"
+}
+
+###
+POST http://localhost:3000/reviews/
+Content-Type: application/json
+
+{
+   "boardgame": "63dc3f3314bc97827b68f52e",
+    "user": "Rusty Shackleford",
+    "rating": "4",
+    "reviewText": "This game was epic!"
 }
 
 ###
