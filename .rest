@@ -60,7 +60,7 @@ DELETE http://localhost:3000/reviews/(id goes here)
 
 //End reviews
 
-// Boardgames
+// Begin boardgames
 ### 
 
 GET http://localhost:3000/boardgames/
@@ -99,3 +99,44 @@ Content-Type: application/json
 }
 
 // End boardgames
+
+// Start sessions
+### 
+
+GET http://localhost:3000/sessions/
+
+###
+
+GET http://localhost:3000/sessions/id
+
+###
+
+POST http://localhost:3000/sessions/
+Content-Type: application/json
+
+{
+  "boardgame": "63dc3f3314bc97827b68f52e",
+  "user": "username2",
+  "players": {
+    "str": "Bob"
+  },  
+  "gameTime": "60",
+  "victory": "me",
+  "notes": ""
+}
+
+###
+
+DELETE http://localhost:3000/sessions/63de87bc631eaf3bfd1df001
+
+
+###
+
+PATCH http://localhost:3000/sessions/63de87d4631eaf3bfd1df005
+Content-Type: application/json
+
+{
+  "gameTime": "90"
+}
+
+// End sessions
