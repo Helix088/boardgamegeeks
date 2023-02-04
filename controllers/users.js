@@ -84,22 +84,22 @@ const editUser = async (req, res, next) => {
 
 // This function only gets called by /middleware/userlink to see if we exist
 const getUserByUserlink = async (req, res, next) => { 
-  console.log("Inside getUserByUserlink")
+  // console.log("Inside getUserByUserlink")
   try {
-    console.log("Before attempt to find")
+    // console.log("Before attempt to find")
     const user = await User.findOne({ email: req.oidc.user.email });
-    console.log("After attempt to find")
+    // console.log("After attempt to find")
 
     if (!user) {
-      console.log("No user - cont/users line 94")
+      // console.log("No user - cont/users line 94")
       //Rather than freaking out and throwing 404, just send it right back
     } else {
-      console.log("Found user")
-      console.log(user)
+      // console.log("Found user")
+      // console.log(user)
       return user;
     }
   } catch (err) {
-    console.log("Bad error catch block getUserByUserlink")
+    // console.log("Bad error catch block getUserByUserlink")
     //500 means server error, not user error
     res.status(500).json({message: err.message});
   }
@@ -131,20 +131,20 @@ const getUserByUserlink = async (req, res, next) => {
 
 
 const addUserByUserlink = async (req, res, next) => {
-  console.log("Inside addUserByUserlink")
+  // console.log("Inside addUserByUserlink")
   try {
 
     const info = {
       username: req.oidc.user.nickname,
       email: req.oidc.user.email
     };
-    console.log("Pulled info")
+    // console.log("Pulled info")
     
     const user = new User(info);
     // const user = new User(req.body);
     user.save().then((data) => {
-      console.log("created:");
-      console.log(user);
+      // console.log("created:");
+      // console.log(user);
       return user;
     })
     .catch((err) => {
