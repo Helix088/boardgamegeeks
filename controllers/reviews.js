@@ -1,4 +1,3 @@
-const review = require('../models/reviews')
 const Review = require('../models/reviews')
 
 const getReviews = async (req, res) => {
@@ -10,10 +9,10 @@ const getReviews = async (req, res) => {
     }
 };
 
-const getReview = async (req, res) => {
+const getReview = async (req, res, next) => {
     try {
-        const gameId = await Review.findById(req.params.id);
-        if(!gameId) {
+        const review = await Review.findById(req.params.id);
+        if(!review) {
             res.status(404).json({ message: "Can't find this review." });
             return;
         }
@@ -23,7 +22,7 @@ const getReview = async (req, res) => {
     }
 };
 
-const addReview = async (req, res) => {
+const addReview = async (req, res, next) => {
     try {
         const review = new Review(req.body);
         review.save().then((data) => {
@@ -43,8 +42,9 @@ const editReview = async (req, res) => {
         if(!review) {
             return res.status(404).send("No review found.");
         }
+        res.status(204).send(review);
     } catch (err) {
-        res.status(204).send(review)
+        res.status(500).send(err);
     }
 }
 
@@ -62,10 +62,46 @@ const deleteReview = async (req, res) => {
     }
 }
 
+const getReviewByGameName = async (req, res, next) => {
+    try {
+        const review = await Review.findOne({ boardgame: req.oidc.boardgame.name });
+        if(!review) {
+            console.log("No review - cont/reviews line 69");
+        } else {
+            return review;
+        }
+    } catch(err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
+const addReviewByGameName = async (req, res, next) => {
+    try {
+        const info = {
+            boardgame: req.oidc.boardgame.name,
+        };
+        const review = new Review(info);
+        review.save().then((data) => {
+            return review;
+        })
+        .catch((err) => {
+            if(!res.headersSent) {
+                res.status(500).json({message: err.message || "Error occured when creating review."});
+            }
+        });
+    } catch(err) {
+        if(!res.headersSent) {
+            res.status(500).json({message: err.message});
+        }
+    }
+}
+
 module.exports = {
     getReviews,
     getReview,
     addReview,
     editReview,
     deleteReview,
+    getReviewByGameName,
+    addReviewByGameName
 }
