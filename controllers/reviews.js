@@ -62,9 +62,9 @@ const deleteReview = async (req, res) => {
     }
 }
 
-const getReviewByGameId = async (req, res, next) => {
+const getReviewByGameName = async (req, res, next) => {
     try {
-        const review = await Review.findOne({ boardgame: req.oidc.boardgame.id });
+        const review = await Review.findOne({ boardgame: req.oidc.boardgame.name });
         if(!review) {
             console.log("No review - cont/reviews line 69");
         } else {
@@ -75,10 +75,10 @@ const getReviewByGameId = async (req, res, next) => {
     }
 }
 
-const addReviewByGameId = async (req, res, next) => {
+const addReviewByGameName = async (req, res, next) => {
     try {
         const info = {
-            boardgame: req.oidc.boardgame.id,
+            boardgame: req.oidc.boardgame.name,
         };
         const review = new Review(info);
         review.save().then((data) => {
@@ -102,6 +102,6 @@ module.exports = {
     addReview,
     editReview,
     deleteReview,
-    getReviewByGameId,
-    addReviewByGameId
+    getReviewByGameName,
+    addReviewByGameName
 }
