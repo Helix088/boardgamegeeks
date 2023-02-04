@@ -63,8 +63,9 @@ const editBoardgame = async (req, res) => {
         if (!boardgame) {
             return res.status(404).send("No boardgame found.");
         }
-    } catch (err) {
         res.status(204).send(boardgame); // 204 doesn't show success message
+    } catch (err) {
+      res.status(500).send(err);
     }
 };
 

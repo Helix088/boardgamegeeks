@@ -91,7 +91,7 @@ DELETE http://localhost:3000/boardgames/63daebc53599ab41eb00111c
 
 ###
 
-PATCH http://localhost:3000/boardgames/63daebc53599ab41eb00111c
+PATCH http://localhost:3000/boardgames/63dee8afaa279c460956f067
 Content-Type: application/json
 
 {

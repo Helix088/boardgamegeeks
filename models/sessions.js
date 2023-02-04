@@ -5,32 +5,32 @@ const sessionSchema = new mongoose.Schema ({
     type: String,
     required: true,
   },
-  user: {           // by username
+  username: {           // by username
     type: String,
     required: true,
   },
   players: {    // array
-    str: {
+    player1: {
         type: String,
         required: true,
     },
-    str: {
+    player2: {
         type: String,
         required: false,
     },
-    str: {
+    player3: {
         type: String,
         required: false,
     },
-    str: {
+    player4: {
         type: String,
         required: false,
     },
-    str: {
+    player5: {
         type: String,
         required: false,
     },
-    str: {
+    player6: {
         type: String,
         required: false,
     }

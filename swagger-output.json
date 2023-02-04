@@ -5,10 +5,10 @@
     "description": "Welcome to my fumbling mess",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "boardgamegeeks.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/boardgames/": {
@@ -26,7 +26,48 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+
+                "name": {
+                  "type": "string",
+                  "example": "Coup"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Use the powers of your characters to counter theirs. Just make sure you're certain they're not bluffing...and don't get caught in a lie..."
+                },
+                "numberOfPlayers": {
+                  "type": "string",
+                  "example": "3-10"
+                },
+                "playingTime": {
+                  "type": "string",
+                  "example": "10-30 minutes"
+                },
+                "weight": {
+                  "type": "number",
+                  "example": "1.41"
+                },
+                "category1": {
+                  "type": "string",
+                  "example": "bluffing"
+                },
+                "category2": {
+                  "type": "string",
+                  "example": "political (optional)"
+                }
+
+
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -68,6 +109,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+
+                "name": {
+                  "type": "string",
+                  "example": "Coup"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Use the powers of your characters to counter theirs. Just make sure you're certain they're not bluffing...and don't get caught in a lie..."
+                },
+                "numberOfPlayers": {
+                  "type": "string",
+                  "example": "3-10"
+                },
+                "playingTime": {
+                  "type": "string",
+                  "example": "10-30 minutes"
+                },
+                "weight": {
+                  "type": "number",
+                  "example": "1.41"
+                },
+                "category1": {
+                  "type": "string",
+                  "example": "bluffing"
+                },
+                "category2": {
+                  "type": "string",
+                  "example": "political (optional)"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -117,7 +196,31 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardgame": {
+                  "type": "integer",
+                  "example": "(by id)"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": "7.1"
+                },
+                "reviewText": {
+                  "type": "string",
+                  "example": "This game was hot garbage, only because I didn't win."
+                }
+              }
+            }
+          }
+        
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -159,6 +262,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardgame": {
+                  "type": "integer",
+                  "example": "(by id)"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": "7.1"
+                },
+                "reviewText": {
+                  "type": "string",
+                  "example": "This game was hot garbage, only because I didn't win."
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -211,7 +335,62 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardgame": {
+                  "type": "string",
+                  "example": "Resistance"
+                },
+                "players": {
+                  "type": "object",
+                  "properties": {
+                    "player1": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player2": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player3": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player4": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player5": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player6": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    }
+                  }
+                },
+                "gameTime": {
+                  "type": "integer",
+                  "example": "90"
+                },
+                "victory": {
+                  "type": "string",
+                  "example": "Jimmy won"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Jimmy totally cheated and I'll never play with him again!!!"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -253,6 +432,60 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardgame": {
+                  "type": "string",
+                  "example": "Resistance"
+                },
+                "players": {
+                  "type": "object",
+                  "properties": {
+                    "player1": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player2": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player3": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player4": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player5": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    },
+                    "player6": {
+                      "type": "string",
+                      "example": "Jimmy"
+                    }
+                  }
+                },
+                "gameTime": {
+                  "type": "integer",
+                  "example": "90"
+                },
+                "victory": {
+                  "type": "string",
+                  "example": "Jimmy won"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Jimmy totally cheated and I'll never play with him again!!!"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -302,7 +535,27 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "xXx_vampire_edgelord_xXx"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "leedler1994@hotmail.net"
+                }
+              }
+            }
+          }
+        
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -344,6 +597,23 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "xXx_vampire_edgelord_xXx"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "leedler1994@hotmail.net"
+                }
+              }
+            }
           }
         ],
         "responses": {

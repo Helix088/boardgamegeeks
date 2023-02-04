@@ -28,7 +28,7 @@ const getSession = async (req, res) => {
 
 const addSession = async (req, res) => {  
     try {
-        const session = new Session(req.body);
+      const session = new Session({...req.body, username: req.user.username});
         session.save().then((data) =>{
             res.status(201).send(data);
         })
@@ -63,8 +63,9 @@ const editSession = async (req, res) => {
         if (!session) {
             return res.status(404).send("No session found.");
         }
+        res.status(204).send(session); // this does not give a confirmation message
     } catch (err) {
-        res.status(204).send(session); // this does not give a confirmation message    
+      res.status(500).send(err);
     }
 };
 

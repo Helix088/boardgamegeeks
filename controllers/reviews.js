@@ -24,7 +24,7 @@ const getReview = async (req, res, next) => {
 
 const addReview = async (req, res, next) => {
     try {
-        const review = new Review(req.body);
+        const review = new Review({...req.body, username: req.user.username});
         review.save().then((data) => {
             res.status(201).send(data);
         })

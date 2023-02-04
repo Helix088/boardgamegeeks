@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema ({
     boardgame: {
-        type: String,
+        type: Number,
         required: true,
     },
-    user: {
+    username: {
         type: String,
         required: true,
     },
