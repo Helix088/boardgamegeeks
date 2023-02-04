@@ -57,3 +57,45 @@ PATCH http://localhost:3000/reviews/(id goes here)
 
 ###
 DELETE http://localhost:3000/reviews/(id goes here)
+
+//End reviews
+
+// Boardgames
+### 
+
+GET http://localhost:3000/boardgames/
+
+###
+
+GET http://localhost:3000/boardgames/63daebc53599ab41eb00111c
+
+###
+
+POST http://localhost:3000/boardgames/
+Content-Type: application/json
+
+{
+  "name": "Thunderstone",
+  "description": "deck builder",
+  "numberOfPlayers": "2-4",
+  "playingTime": "30",
+  "weight": "",
+  "category1": "deck builder",
+  "category2": ""  
+}
+
+###
+
+DELETE http://localhost:3000/boardgames/63daebc53599ab41eb00111c
+
+
+###
+
+PATCH http://localhost:3000/boardgames/63daebc53599ab41eb00111c
+Content-Type: application/json
+
+{
+  "name": "Something"
+}
+
+// End boardgames
