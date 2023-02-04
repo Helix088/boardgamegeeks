@@ -9,8 +9,11 @@ const usersController = require('../controllers/users');
 
 routes.get('/', usersController.getUsers);
 routes.get('/:id', usersController.getUser);
-routes.post('/', security.checkLogin, usersController.addUser);
-routes.patch('/:id', security.checkLogin, usersController.editUser);
-routes.delete('/:id', security.checkLogin, usersController.delUser);
+// routes.post('/', usersController.addUser);
+// routes.patch('/:id', usersController.editUser);
+// routes.delete('/:id', usersController.delUser);
+routes.post("/", security.checkLogin, usersController.addUser);
+routes.patch("/:id", security.checkLogin, usersController.editUser);
+routes.delete("/:id", security.checkLogin, usersController.delUser);
 
 module.exports = routes; 
