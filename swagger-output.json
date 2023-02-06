@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Welcome to my fumbling mess",
+    "title": "Geek's Game Board API",
+    "description": "Welcome to our fumbling mess. -Team 30",
     "version": "1.0.0"
   },
   "host": "boardgamegeeks.onrender.com",
@@ -13,7 +13,10 @@
   "paths": {
     "/boardgames/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boardgames"
+        ],
+        "description": "Get all boardgames.",
         "parameters": [],
         "responses": {
           "200": {
@@ -25,7 +28,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Boardgames"
+        ],
+        "description": "Add a boardgame.",
         "parameters": [
           {
             "name": "body",
@@ -80,7 +86,10 @@
     },
     "/boardgames/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Boardgames"
+        ],
+        "description": "Get a boardgame by id.",
         "parameters": [
           {
             "name": "id",
@@ -102,7 +111,10 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Boardgames"
+        ],
+        "description": "Update a boardgame by id.",
         "parameters": [
           {
             "name": "id",
@@ -159,7 +171,10 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Boardgames"
+        ],
+        "description": "Delete a boardgame by id.",
         "parameters": [
           {
             "name": "id",
@@ -183,7 +198,10 @@
     },
     "/reviews/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Get all reviews.",
         "parameters": [],
         "responses": {
           "200": {
@@ -195,7 +213,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Add a review.",
         "parameters": [
           
           {
@@ -233,7 +254,10 @@
     },
     "/reviews/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Get a review by id.",
         "parameters": [
           {
             "name": "id",
@@ -255,7 +279,10 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Update a review by id.",
         "parameters": [
           {
             "name": "id",
@@ -298,7 +325,10 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Reviews"
+        ],
+        "description": "Delete a review by id.",
         "parameters": [
           {
             "name": "id",
@@ -322,7 +352,10 @@
     },
     "/sessions/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Sessions"
+        ],
+        "description": "Get all game sessions.",
         "parameters": [],
         "responses": {
           "200": {
@@ -334,7 +367,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Sessions"
+        ],
+        "description": "Add a game session.",
         "parameters": [
           {
             "name": "body",
@@ -403,7 +439,10 @@
     },
     "/sessions/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Sessions"
+        ],
+        "description": "Get a game session by id.",
         "parameters": [
           {
             "name": "id",
@@ -425,7 +464,10 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Sessions"
+        ],
+        "description": "Update a game session by id.",
         "parameters": [
           {
             "name": "id",
@@ -498,7 +540,10 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Sessions"
+        ],
+        "description": "Delete a game session by id.",
         "parameters": [
           {
             "name": "id",
@@ -522,7 +567,10 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Get all users.",
         "parameters": [],
         "responses": {
           "200": {
@@ -534,7 +582,10 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Add a user.",
         "parameters": [
           
           {
@@ -568,7 +619,10 @@
     },
     "/users/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Get a user by id.",
         "parameters": [
           {
             "name": "id",
@@ -590,7 +644,10 @@
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Update a user.",
         "parameters": [
           {
             "name": "id",
@@ -629,7 +686,10 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Delete a user by id.",
         "parameters": [
           {
             "name": "id",
@@ -653,6 +713,9 @@
     },
     "/api-docs/": {
       "get": {
+        "tags": [
+          "api-docs"
+        ],
         "description": "",
         "parameters": [],
         "responses": {}
