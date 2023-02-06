@@ -11,7 +11,7 @@ const getSessions = async (req, res) => {
 
 const getSession = async (req, res) => {
     try {
-        const session = await Session.findById({...req.params.id, username: req.user.username});
+        const session = await Session.findById(req.params.id);
         if (!session) {
             // 404 means does not exist
             res.status(404).json({ message: "Can't find this session." });
