@@ -10,9 +10,6 @@ const getBoardgames = async (req, res) => {
 };
 
 const getBoardgame = async (req, res) => {
-    // if (!ObjectId.isValid(req.params.id)) {
-    //     res.status(400).json('Must use a valid id to find a boardgame.')
-    // } // used this with mongodb
     try {
         const game = await Boardgame.findById(req.params.id);
         if (!game) {
@@ -41,9 +38,6 @@ const addBoardgame = async (req, res) => {
 };
 
 const delBoardgame = async (req, res) => {
-    // if (!ObjectId.isValid(req.params.id)) {
-    //     res.status(400).json('Must use a valid id to remove a boardgame.')
-    // } used this for mongodb    
     try {
         const boardgame = await Boardgame.findById(req.params.id);
         if (!boardgame) {

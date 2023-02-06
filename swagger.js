@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'My API',
-    description: 'Welcome to my fumbling mess',
+    title: "Geek's Game Board API",
+    description: 'Welcome to our fumbling mess. -Team 30',
   },
   //Imagine I'll have to keep changing this to the current render link\
   //Also change it in line 8 on swagger-output.js

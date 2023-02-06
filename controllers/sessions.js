@@ -10,9 +10,6 @@ const getSessions = async (req, res) => {
 };
 
 const getSession = async (req, res) => {
-    // if (!ObjectId.isValid(req.params.id)) {
-    //     res.status(400).json('Must use a valid id to find a session)
-    // } // used this with mongodb
     try {
         const session = await Session.findById(req.params.id);
         if (!session) {
@@ -40,10 +37,7 @@ const addSession = async (req, res) => {
     }
 };
 
-const delSession = async (req, res) => {
-    // if (!ObjectId.isValid(req.params.id)) {
-    //     res.status(400).json('Must use a valid id to remove a boardgame.')
-    // } used this for mongodb    
+const delSession = async (req, res) => {   
     try {
         const session = await Session.findById(req.params.id);
         if (!session) {
