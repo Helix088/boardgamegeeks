@@ -2,6 +2,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 mongoose = require('mongoose');
 
+//If there are problems, here is why (maybe?!)
+mongoose.set('strictQuery', false);
+
 let _db;
 
 const initDb = (callback) => {
