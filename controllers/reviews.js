@@ -16,7 +16,7 @@ const getReview = async (req, res, next) => {
             res.status(404).json({ message: "Can't find this review." });
             return;
         }
-        res.status(200).json(user);
+        res.status(200).json(review);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
