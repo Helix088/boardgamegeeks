@@ -8,10 +8,10 @@ const sessionsController = require('../controllers/sessions');
 routes.get('/', sessionsController.getSessions); 
 routes.get('/:id', sessionsController.getSession);
 // routes.post('/', sessionsController.addSession);
-routes.post('/', security.checkLogin, userlink.findUser, sessionsController.addSession);
 // routes.patch('/:id', sessionsController.editSession);
-routes.patch('/:id', security.checkLogin, userlink.findUser, sessionsController.editSession);
 // routes.delete('/:id', sessionsController.delSession);
+routes.post('/', security.checkLogin, userlink.findUser, sessionsController.addSession);
+routes.patch('/:id', security.checkLogin, userlink.findUser, sessionsController.editSession);
 routes.delete('/:id', security.checkLogin, userlink.findUser, sessionsController.delSession);
 
 module.exports = routes; 
