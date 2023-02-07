@@ -76,3 +76,5 @@ mongodb.initDb((err, mongodb) => {
 
   }
 });
+
+module.exports = app;

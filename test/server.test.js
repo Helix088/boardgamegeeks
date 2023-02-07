@@ -1,8 +1,12 @@
 const request = require('supertest');
-const express = require('express');
-const app = express();
-const server = require('../server.js');
-server(app);
+// const express = require('express');
+// const app = express();
+// const server = require('../server.js');
+// server(app);
+
+
+const app = require('../server.js');
+
 
 describe('Test the root path', () => {
   it('should return 200 status code', async () => {
