@@ -7,9 +7,6 @@ const boardgamesController = require('../controllers/boardgames');
 
 routes.get('/', boardgamesController.getBoardgames); 
 routes.get('/:id', boardgamesController.getBoardgame);
-// routes.post('/', boardgamesController.addBoardgame);
-// routes.patch('/:id', boardgamesController.editBoardgame);
-// routes.delete('/:id', boardgamesController.delBoardgame);
 routes.post('/', security.checkLogin, boardgamesController.addBoardgame);
 routes.patch('/:id', security.checkLogin, boardgamesController.editBoardgame);
 routes.delete('/:id', security.checkLogin, boardgamesController.delBoardgame);
