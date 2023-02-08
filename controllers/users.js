@@ -105,30 +105,6 @@ const getUserByUserlink = async (req, res, next) => {
   }
 };
 
-// const addUserByUserlink = async (req, res, next) => {
-//   console.log("Inside addUserByUserlink")
-//   try {
-//     const info = {
-//       username: req.oidc.user.nickname,
-//       email: req.oidc.user.email
-//     };
-//     console.log("Pulled info")
-    
-//     const user = new User(info);
-//     // const user = new User(req.body);
-//     user.save().then((data) => {
-//       //201 means new thing created as opposed to general 200 "everything worked"
-//       res.status(201).send(data);
-//     })
-//     .catch((err) => {
-//       res.status(500).json({message: err.message || 'Error occured creating user.'});
-//     });
-//   } catch (err) {
-//     //500 means server error, not user error
-//     res.status(500).json({message: err.message});
-//   }
-// }
-
 
 const addUserByUserlink = async (req, res, next) => {
   // console.log("Inside addUserByUserlink")

@@ -25,6 +25,7 @@ const getBoardgame = async (req, res) => {
 
 const addBoardgame = async (req, res) => {  
     try {
+      console.log(req.body)
         const boardgame = new Boardgame(req.body);
         boardgame.save().then((data) =>{
             res.status(201).send(data);
@@ -35,6 +36,7 @@ const addBoardgame = async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+    // console.log(boardgame)
 };
 
 const delBoardgame = async (req, res) => {
