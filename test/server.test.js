@@ -57,12 +57,27 @@ describe('Test the boardgames route', () => {
 
 });
 
-// describe('Test the reviews route', () => {
-//   it('should return 200 status code', async () => {
-//     const response = await request(app).get('/reviews');
-//     expect(response.status).toBe(200);
-//   });
-// });
+describe('Test the reviews route', () => {
+  // get
+  // it('should return 200 status code', async () => {
+  //   const response = await request(app).get('/reviews');
+  //   expect(response.status).toBe(200);
+  // });
+  it("should return 200 status code", async () => {
+    const newReview = {
+      boardgame: "Monopoly",
+      username: "geo.c.blanchard",
+      rating: 2.5,
+      reviewText: "This game was awful!",
+    };
+    const response = await request(app)
+      .post("/reviews")
+      .set("Authorization", `Bearer ${token}`)
+      .send(newReview);
+    console.log(response);
+    expect(response.status).toBe(201);
+  });
+});
 
 // describe('Test the sessions route', () => {
 //   it('should return 200 status code', async () => {

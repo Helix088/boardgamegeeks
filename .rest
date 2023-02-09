@@ -34,32 +34,6 @@ Content-type: application/json
 }
 //End users
 
-//Begin reviews
-### Reviews
-GET http://localhost:3000/reviews/
-
-### Individual Review
-GET http://localhost:3000/reviews/
-
-###
-POST http://localhost:3000/reviews/
-Content-Type: application/json
-
-{
-   "boardgame": "63dc3f3314bc97827b68f52e",
-    "user": "Rusty Shackleford",
-    "rating": "4",
-    "reviewText": "This game was epic!"
-}
-
-###
-PATCH http://localhost:3000/reviews/(id goes here)
-
-###
-DELETE http://localhost:3000/reviews/(id goes here)
-
-//End reviews
-
 // Begin boardgames
 ### 
 
@@ -99,6 +73,38 @@ Content-Type: application/json
 }
 
 // End boardgames
+
+//Begin reviews
+### Reviews
+GET http://localhost:3000/reviews/
+
+### Individual Review
+GET http://localhost:3000/reviews/63e476288a9d9b8fcdbb3c9d
+
+###
+POST http://localhost:3000/reviews/
+Content-Type: application/json
+
+{
+   "boardgame": "63dc3f3314bc97827b68f52e",
+    "user": "Rusty Shackleford",
+    "rating": "4",
+    "reviewText": "This game was epic!"
+}
+
+###
+PATCH http://localhost:3000/reviews/63e476288a9d9b8fcdbb3c9d
+
+{
+    "boardgame": 88,
+    "reviewText": "This game was the greatest game I have ever played!",
+    "__v": 0
+}
+
+###
+DELETE http://localhost:3000/reviews/63e476288a9d9b8fcdbb3c9d
+
+//End reviews
 
 // Start sessions
 ### 

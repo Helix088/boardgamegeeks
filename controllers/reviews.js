@@ -103,5 +103,5 @@ module.exports = {
     editReview,
     deleteReview,
     getReviewByGameName,
-    addReviewByGameName
+    addReviewByGameName,
 }

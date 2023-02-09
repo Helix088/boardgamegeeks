@@ -30,7 +30,7 @@ const addSession = async (req, res) => {
             res.status(201).send(data);
         })
         .catch((err) => {
-            res.status(500).json({ message: err.messsage || 'Error occured creating session.' });
+            res.status(500).json({ message: err.message || 'Error occured creating session.' });
         });        
     } catch (err) {
         res.status(500).json({ message: err.message });
