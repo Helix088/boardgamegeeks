@@ -16,7 +16,7 @@ const userInfo = {
 const secretKey = process.env.SECRET;
 const token = jwt.sign(userInfo, secretKey);
 
-console.log(token);
+// console.log(token);
 
 
 // describe('Test the root path', () => {
@@ -50,7 +50,7 @@ describe('Test the boardgames route', () => {
     .set('Authorization', `Bearer ${token}`)
 
     .send(newgame);
-    console.log(response)
+    // console.log(response)
     expect(response.status).toBe(201);
   });
 
@@ -79,18 +79,20 @@ describe('Test the reviews route', () => {
   //   const response = await request(app).get('/reviews');
   //   expect(response.status).toBe(200);
   // });
-  it("should return 200 status code", async () => {
+
+  //post
+  it('should return 201 status code for POST', async () => {
     const newReview = {
       boardgame: "Monopoly",
       username: "geo.c.blanchard",
-      rating: 2.5,
+      rating: '2.5',
       reviewText: "This game was awful!",
     };
     const response = await request(app)
       .post("/reviews")
       .set("Authorization", `Bearer ${token}`)
       .send(newReview);
-    console.log(response);
+    // console.log(response);
     expect(response.status).toBe(201);
   });
 });
