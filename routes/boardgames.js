@@ -9,7 +9,7 @@ const boardgamesController = require('../controllers/boardgames');
 routes.get('/', boardgamesController.getBoardgames); 
 routes.get('/:id', boardgamesController.getBoardgame);
 routes.post('/', validateJWT, boardgamesController.addBoardgame);
-routes.patch('/:id',  boardgamesController.editBoardgame);
-routes.delete('/:id',  boardgamesController.delBoardgame);
+routes.patch('/:id', validateJWT, boardgamesController.editBoardgame);
+routes.delete('/:id', validateJWT, boardgamesController.delBoardgame);
 
 module.exports = routes; 

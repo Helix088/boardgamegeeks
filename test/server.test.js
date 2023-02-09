@@ -57,6 +57,22 @@ describe('Test the boardgames route', () => {
 
 });
 
+describe('Test the boardgames route', () => {
+  // delete
+  it('should return 200 status code for DELETE', async() => {
+    const id = "663e56665797fb214cf80a894";
+
+    const response = await request(app)
+    .delete(`/boardgames/${id}`)
+    .set('Authorization', `Bearer ${token}`);
+    
+    console.log(`Delete response: ${response}`);
+    
+    expect(response.status).toBe(200);
+  });
+});
+
+
 describe('Test the reviews route', () => {
   // get
   // it('should return 200 status code', async () => {
