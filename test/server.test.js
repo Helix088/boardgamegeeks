@@ -24,123 +24,142 @@ const secretKey = process.env.SECRET;
 const token = jwt.sign(userInfo, secretKey);
 
 
-describe('Test the reviews route', () => {
-  // get
-  // it('should return 200 status code', async () => {
-  //   const response = await request(app).get('/reviews');
-  //   expect(response.status).toBe(200);
-  // });
-
-  //post
-  it('should return 201 status code for POST', async () => {
-
-    const newReview = {
-      boardgame: "5",
-      // username: "geo.c.blanchard",
-      rating: '2.5',
-      reviewText: "This game was awful!",
-    };
-    //req.body
-    
-
-    const response = await request(app)
-      .post("/reviews")
-      .set("Authorization", `Bearer ${token}`)
-      // .set('Cookie', [`user=${JSON.stringify(userInfo)}`])
-      // .set("oidc", { user: { email: "test@email.com", nickname: "testusername" } })
-
-      .send(newReview);
-    // console.log(response);
-    expect(response.status).toBe(201);
-  });
-});
-
 // console.log(token);
 
 
-// describe('Test the root path', () => {
-//   it('should return 200 status code', async () => {
-//     const response = await request(app).get('/');
-//     expect(response.status).toBe(200);
-//   });
-// });
+describe('Test the root path', () => {
+  it('should return 200 status code', async () => {
+    const response = await request(app).get('/');
+    expect(response.status).toBe(200);
+  });
+});
 
-// describe('Test the boardgames route', () => {
+
+// BOARDGAMES
+describe('Test the boardgames route', () => {
+  // get
+  it('should return 200 status code for GET', async () => {
+    const response = await request(app).get('/boardgames');
+    expect(response.status).toBe(200);
+  });
+
+  // post
+  it('should return 201 status code for POST', async () => {
+    const newgame = {
+      name: 'Monopoly',
+      description: 'hateful',
+      numberOfPlayers: '2-6',
+      playingTime: '90',
+      category1: 'boring'
+    };
+
+    const response = await request(app)
+    // .post('/boardgames', {headers: {Authorization: `Bearer ${token}`}})
+    .post('/boardgames')
+    .set('Authorization', `Bearer ${token}`)
+    .send(newgame);
+    // console.log(response)
+    expect(response.status).toBe(201);
+  });
+
+  // delete
+  it('should return 200 status code for DELETE', async() => {
+    const id = "63e6a7fa39d54d7bc8b2fb7d";
+
+    const response = await request(app)
+    .delete(`/boardgames/${id}`)
+    .set('Authorization', `Bearer ${token}`);    
+    // console.log(`Delete response: ${response}`);    
+    expect(response.status).toBe(200);
+  });
+
+  // patch
+  it('should return 204 status code for PATCH', async() => {
+    const id = "63e564ee9a880c099bb405da";
+
+    const newcontent = {
+      name: 'Splendor'
+    };
+
+    const response = await request(app)
+    .patch(`/boardgames/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(newcontent);
+    
+    expect(response.status).toBe(204);
+  });
+});
+
+
+// SESSIONS
+describe('Test the sessions route', () => {
+  // get
+  it('should return 200 status code for GET', async () => {
+    const response = await request(app).get('/sessions');
+    expect(response.status).toBe(200);
+  });  
+
+  // delete
+  it('should return 200 status code for DELETE', async() => {
+    const id = "63e168b7e64dd62e38799566";
+
+    const response = await request(app)
+    .delete(`/sessions/${id}`)
+    .set('Authorization', `Bearer ${token}`);    
+    // console.log(`Delete response: ${response}`);    
+    expect(response.status).toBe(200);
+  });
+
+  // patch
+  it('should return 204 status code for PATCH', async() => {
+    const id = "63deede362db381eb31750e5";
+
+    const newcontent = {
+      victory: 'We all lost.'
+    };
+
+    const response = await request(app)
+    .patch(`/sessions/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(newcontent);
+    
+    expect(response.status).toBe(204);
+  });
+});
+
+// REVIEWS
+// describe('Test the reviews route', () => {
 //   // get
 //   // it('should return 200 status code', async () => {
-//   //   const response = await request(app).get('/boardgames');
+//   //   const response = await request(app).get('/reviews');
 //   //   expect(response.status).toBe(200);
 //   // });
 
-//   // post
+//   //post
 //   it('should return 201 status code for POST', async () => {
-//     const newgame = {
-//       name: 'Monopoly',
-//       description: 'hateful',
-//       numberOfPlayers: '2-6',
-//       playingTime: '90',
-//       category1: 'boring'
+
+//     const newReview = {
+//       boardgame: "5",
+//       // username: "geo.c.blanchard",
+//       rating: '2.5',
+//       reviewText: "This game was awful!",
 //     };
+//     //req.body
+    
 
 //     const response = await request(app)
-//     // .post('/boardgames', {headers: {Authorization: `Bearer ${token}`}})
-//     .post('/boardgames')
+//       .post("/reviews")
+//       .set("Authorization", `Bearer ${token}`)
+//       // .set('Cookie', [`user=${JSON.stringify(userInfo)}`])
+//       // .set("oidc", { user: { email: "test@email.com", nickname: "testusername" } })
 
-//     .set('Authorization', `Bearer ${token}`)
-
-//     .send(newgame);
-//     // console.log(response)
+//       .send(newReview);
+//     // console.log(response);
 //     expect(response.status).toBe(201);
 //   });
-
-
 // });
 
-// describe('Test the delete boardgames endpoint', () => {
-//   // delete
-//   it('should return 200 status code for DELETE', async() => {
-//     const id = "63e566077ece47f70bb45e52";
-
-//     const response = await request(app)
-//     .delete(`/boardgames/${id}`)
-//     .set('Authorization', `Bearer ${token}`);
-    
-//     // console.log(`Delete response: ${response}`);
-    
-//     expect(response.status).toBe(200);
-//   });
-// });
-
-// describe('Test the patch boardgames endpoint', () => {
-//   // patch
-//   it('should return 204 status code for PATCH', async() => {
-//     const id = "63e564ee9a880c099bb405da";
-
-//     const newcontent = {
-//       name: 'Splendor'
-//     };
-
-//     const response = await request(app)
-//     .patch(`/boardgames/${id}`)
-//     .set('Authorization', `Bearer ${token}`)
-//     .send(newcontent);
-    
-//     // console.log(`Delete response: ${response}`);
-    
-//     expect(response.status).toBe(204);
-//   });
-// });
-
-
-
-
-// describe('Test the sessions route', () => {
-//   it('should return 200 status code', async () => {
-//     const response = await request(app).get('/sessions');
-//     expect(response.status).toBe(200);
-//   });
-// });
-
+// USERS
 // describe('Test the users route', () => {
 //   it('should return 200 status code', async () => {
 //     const response = await request(app).get('/users');
