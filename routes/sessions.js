@@ -12,7 +12,7 @@ routes.get('/:id', sessionsController.getSession);
 // routes.patch('/:id', sessionsController.editSession);
 // routes.delete('/:id', sessionsController.delSession);
 routes.post('/', validateJWT, userlink.findUser, sessionsController.addSession);
-routes.patch('/:id', validateJWT, userlink.findUser, sessionsController.editSession);
-routes.delete('/:id', validateJWT, userlink.findUser, sessionsController.delSession);
+routes.patch('/:id', validateJWT, sessionsController.editSession);
+routes.delete('/:id', validateJWT, sessionsController.delSession);
 
 module.exports = routes; 

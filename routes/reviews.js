@@ -12,7 +12,7 @@ routes.get('/:id', reviewsController.getReview);
 // routes.patch('/:id', validateJWT, reviewsController.editReview);
 // routes.delete('/:id', validateJWT, reviewsController.deleteReview);
 routes.post("/", validateJWT, userlink.findUser, reviewsController.addReview);
-routes.patch("/:id", validateJWT, userlink.findUser, reviewsController.editReview);
-routes.delete("/:id", validateJWT, userlink.findUser, reviewsController.deleteReview);
+routes.patch("/:id", validateJWT, reviewsController.editReview);
+routes.delete("/:id", validateJWT, reviewsController.deleteReview);
 
 module.exports = routes; 

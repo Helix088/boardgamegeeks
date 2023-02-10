@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const jose = require('jose')
 
 const getUsers = async (req, res, next) => {
   try {
@@ -81,25 +82,61 @@ const editUser = async (req, res, next) => {
 
 // Userlink experiment
 
+// const decodeToken = async (token) => {
+
+//   console.log("Hey we're here")
+  
+//   const secret = process.env.SECRET
+//   const leedle = await jose.jwtDecrypt(token, secret)
+  
+  
+//   console.log(leedle)
+//   return
+  
+//   // const decoded = new TextDecoder()
+//   // console.log(decoded)
+//   // const attempt2 = decoded.decode(token)
+  
+//     // const decoded = jose.base64url.decode(token)
+//     // console.log(attempt2)
+//     // const payload = Buffer.from(decoded, "base64" ).toString("utf8")
+//     // console.log(payload)
+//     // console.log(typeof payload)
+//     // const parsed = JSON.parse(payload)
+//     // console.log(parsed)
+//     // return payload;
+// }
+
 
 // This function only gets called by /middleware/userlink to see if we exist
 const getUserByUserlink = async (req, res, next) => { 
-  // console.log("Inside getUserByUserlink")
+  console.log("Inside getUserByUserlink")
   try {
-    // console.log("Before attempt to find")
-    const user = await User.findOne({ email: req.oidc.user.email });
-    // console.log("After attempt to find")
+    console.log("Before attempt to find")
+    
+    // const user = await User.findOne({ email: req.oidc.user.email });
+
+
+
+
+    const token = req.headers.authorization;
+    const stripped = token.replace("Bearer ", "");
+    const decoded = decodeToken(stripped);
+    // console.log(decoded)
+
+    // const user = 
+    console.log("After attempt to find")
 
     if (!user) {
-      // console.log("No user - cont/users line 94")
+      console.log("No user - cont/users line 94")
       //Rather than freaking out and throwing 404, just send it right back
     } else {
-      // console.log("Found user")
-      // console.log(user)
+      console.log("Found user")
+      console.log(user)
       return user;
     }
   } catch (err) {
-    // console.log("Bad error catch block getUserByUserlink")
+    console.log("Bad error catch block getUserByUserlink")
     //500 means server error, not user error
     res.status(500).json({message: err.message});
   }
@@ -107,20 +144,25 @@ const getUserByUserlink = async (req, res, next) => {
 
 
 const addUserByUserlink = async (req, res, next) => {
-  // console.log("Inside addUserByUserlink")
+  console.log("Inside addUserByUserlink")
+  // console.log(req.body)
+  // console.log(req.oidc)
+  // console.log(req.oidc.user)
+  // console.log(req.oidc.user.nickname)
+  // console.log(req.oidc.user.email)
   try {
 
     const info = {
       username: req.oidc.user.nickname,
       email: req.oidc.user.email
     };
-    // console.log("Pulled info")
+    console.log("Pulled info")
     
     const user = new User(info);
     // const user = new User(req.body);
     user.save().then((data) => {
-      // console.log("created:");
-      // console.log(user);
+      console.log("created:");
+      console.log(user);
       return user;
     })
     .catch((err) => {
@@ -135,6 +177,8 @@ const addUserByUserlink = async (req, res, next) => {
     }
   }
 }
+
+
 
 
 module.exports = { getUsers, getUser, addUser, delUser, editUser, getUserByUserlink, addUserByUserlink};

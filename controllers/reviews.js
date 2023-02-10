@@ -29,10 +29,15 @@ const addReview = async (req, res, next) => {
             res.status(201).send(data);
         })
         .catch((err) => {
-            res.status(500).json({ message: err.message || 'Error occured creating the review.' });
+            // res.status(500).json({ message: err.message || 'Error occured creating the review.' });
+            console.error(err);
+            next(err);
         });
     } catch(err) {
-        res.status(500).json({ message: err.message });
+        // res.status(500).json({ message: err.message });
+        console.error(err);
+            next(err);
+        return
     }
 };
 
@@ -45,6 +50,7 @@ const editReview = async (req, res) => {
         res.status(204).send(review);
     } catch (err) {
         res.status(500).send(err);
+        return
     }
 }
 
@@ -59,6 +65,7 @@ const deleteReview = async (req, res) => {
         res.status(200).json({ message: "Successfully deleted review." })
     } catch(err) {
         res.status(500).json({ message: err.message || 'An error occured while attempting to delete the review.'})
+        return
     }
 }
 
