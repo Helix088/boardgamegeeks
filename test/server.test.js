@@ -24,7 +24,7 @@ const secretKey = process.env.SECRET;
 const token = jwt.sign(userInfo, secretKey);
 
 
-// console.log(token);
+console.log(token);
 
 
 describe('Test the root path', () => {
@@ -128,36 +128,74 @@ describe('Test the sessions route', () => {
 });
 
 // REVIEWS
-// describe('Test the reviews route', () => {
-//   // get
-//   // it('should return 200 status code', async () => {
-//   //   const response = await request(app).get('/reviews');
-//   //   expect(response.status).toBe(200);
-//   // });
+describe('Test the reviews route', () => {
+  // get
+  it("should return 200 status code", async () => {
+    const response = await request(app).get("/reviews");
+    expect(response.status).toBe(200);
+  });
 
-//   //post
-//   it('should return 201 status code for POST', async () => {
+  // post
+  // it("should add a new review to the database", async () => {
+  //   const newReview = {
+  //     boardgame: "88",
+  //     username: "swordgeo1094",
+  //     rating: "4.5",
+  //     reviewText: "This game was fun!",
+  //   };
+  //   const response = await request(app)
+  //     .post("/reviews")
+  //     .set("Authorization", `Bearer ${token}`)
+  //     .send(newReview);
+  //   expect(response.status).toBe(201);
+  //   expect(response.body).toHaveProperty("id");
+  //   expect(response.body.boardgame).toBe(newReview.boardgame);
+  //   expect(response.body.username).toBe(newReview.username);
+  //   expect(response.body.rating).toBe(newReview.rating);
+  //   expect(response.body.reviewText).toBe(newReview.reviewText);
+  // });
+    // it("should add a new review to the database", async () => {
+    //   const newReview = {
+    //     boardgame: "88",
+    //     username: "swordgeo1094",
+    //     rating: "4.5",
+    //     reviewText: "This game was fun!",
+    //   };
+    //       const response = await request(app)
+    //         .post("/reviews")
+    //         .set("Authorization", `${stripped}`)
+    //         .send(newReview);
+    //       expect(response.status).toBe(201);
+    //       expect(response.body).toHaveProperty("id");
+    // });
 
-//     const newReview = {
-//       boardgame: "5",
-//       // username: "geo.c.blanchard",
-//       rating: '2.5',
-//       reviewText: "This game was awful!",
-//     };
-//     //req.body
-    
+  //delete
+  it("should return 200 status code for DELETE", async () => {
+    const id = "63e1676ee64dd62e38799555";
 
-//     const response = await request(app)
-//       .post("/reviews")
-//       .set("Authorization", `Bearer ${token}`)
-//       // .set('Cookie', [`user=${JSON.stringify(userInfo)}`])
-//       // .set("oidc", { user: { email: "test@email.com", nickname: "testusername" } })
+    const response = await request(app)
+      .delete(`/reviews/${id}`)
+      .set("Authorization", `Bearer ${token}`);
+    expect(response.status).toBe(200);
+  });
 
-//       .send(newReview);
-//     // console.log(response);
-//     expect(response.status).toBe(201);
-//   });
-// });
+  // patch
+  it("should return 204 status code for PATCH", async () => {
+    const id = "63e3f7f255f991b44d18e176";
+
+    const newcontent = {
+      rating: "3.4",
+      reviewText: "This game was terrible!"
+    };
+
+    const response = await request(app)
+      .patch(`/reviews/${id}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send(newcontent);
+
+    expect(response.status).toBe(204);
+  });
+});
 
 // USERS
 // describe('Test the users route', () => {
