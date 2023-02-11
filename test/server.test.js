@@ -72,7 +72,7 @@ describe('Test the boardgames route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e6adeafd53285b315f26ba";
+    const id = "63e7cf9795e7e8d53392e9b9";
 
     const response = await request(app)
     .delete(`/boardgames/${id}`)
@@ -117,7 +117,7 @@ describe('Test the sessions route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e7d449abb3933695c59a91";
+    const id = "63e7e974a1e7ad4932598476"
 
     const response = await request(app)
     .delete(`/sessions/${id}`)
@@ -146,7 +146,7 @@ describe('Test the sessions route', () => {
 // REVIEWS
 describe('Test the reviews route', () => {
   // get
-  it("should return 200 status code", async () => {
+  it("should return 200 status code for GET", async () => {
     const response = await request(app).get("/reviews");
     expect(response.status).toBe(200);
   });
@@ -195,7 +195,7 @@ describe('Test the reviews route', () => {
 
   //delete
   it("should return 200 status code for DELETE", async () => {
-    const id = "63e6cc723f8955e522c98aa2";
+    const id = "63e7e953a1e7ad493259846f";
 
     const response = await request(app)
       .delete(`/reviews/${id}`)
@@ -255,7 +255,7 @@ describe('Test the users route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e2d52cc16edb10bf24918b";
+    const id = "63e7d9dbfad2ca94536fa744";
 
     const response = await request(app)
     .delete(`/users/${id}`)
