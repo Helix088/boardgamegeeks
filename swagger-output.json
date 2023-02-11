@@ -5,10 +5,10 @@
     "description": "Welcome to our fumbling mess. -Team 30",
     "version": "1.0.0"
   },
-  "host": "boardgamegeeks.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/boardgames/": {

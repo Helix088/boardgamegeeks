@@ -1,18 +1,22 @@
 const express = require('express');
 const routes = express.Router();
-// const security = require('../middleware/authorize.js');
-const userlink = require('../middleware/userlink.js');
+const {findUser} = require('../middleware/userlink.js');
 const reviewsController = require('../controllers/reviews');
-const {validateJWT} = require('../middleware/token.js')
+const {checkLogin} = require('../middleware/authorize.js');
+const {validateJWT} = require('../middleware/token.js');
 
 
 routes.get('/', reviewsController.getReviews); 
 routes.get('/:id', reviewsController.getReview);
-// routes.post('/', validateJWT, reviewsController.addReview);
-// routes.patch('/:id', validateJWT, reviewsController.editReview);
-// routes.delete('/:id', validateJWT, reviewsController.deleteReview);
-routes.post("/", validateJWT, userlink.findUser, reviewsController.addReview);
-routes.patch("/:id", validateJWT, reviewsController.editReview);
-routes.delete("/:id", validateJWT, reviewsController.deleteReview);
+
+if (process.env.NODE_ENV === 'test') {
+  routes.post('/', validateJWT, findUser, reviewsController.addReview);
+  routes.patch('/:id', validateJWT, reviewsController.editReview);
+  routes.delete('/:id', validateJWT, reviewsController.delReview);
+} else {
+  routes.post('/', checkLogin, findUser, reviewsController.addReview);
+  routes.patch('/:id', checkLogin, reviewsController.editReview);
+  routes.delete('/:id', checkLogin, reviewsController.delReview);
+}
 
 module.exports = routes; 

@@ -12,14 +12,14 @@ const findUser = async (req, res, next) => {
     const usertest = await usersController.getUserByUserlink(req, res, next);
 
     if (!usertest) {
-      console.log("Couldn't find them...creating but not inside catch block...")
+      // console.log("Couldn't find them...creating but not inside catch block...")
       let createduser = await usersController.addUserByUserlink(req, res, next);
       req.user = createduser;
     } else {
       req.user = usertest;
     }
   } catch (err) {
-    console.log("Couldn't find them...creating from catch block...")
+    // console.log("Couldn't find them...creating from catch block...")
     let createduser = await usersController.addUserByUserlink(req, res, next);
     req.user = createduser;
   };

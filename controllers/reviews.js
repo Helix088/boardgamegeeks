@@ -69,7 +69,7 @@ const editReview = async (req, res) => {
   }
 };
 
-const deleteReview = async (req, res) => {
+const delReview = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
     if (!review) {
@@ -90,52 +90,50 @@ const deleteReview = async (req, res) => {
   }
 };
 
-const getReviewByGameName = async (req, res, next) => {
-  try {
-    const review = await Review.findOne({ boardgame: req.oidc.boardgame.name });
-    if (!review) {
-      console.log("No review - cont/reviews line 69");
-    } else {
-      return review;
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+// const getReviewByGameName = async (req, res, next) => {
+//   try {
+//     const review = await Review.findOne({ boardgame: req.oidc.boardgame.name });
+//     if (!review) {
+//       console.log("No review - cont/reviews line 69");
+//     } else {
+//       return review;
+//     }
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
 
-const addReviewByGameName = async (req, res, next) => {
-  try {
-    const info = {
-      boardgame: req.oidc.boardgame.name,
-    };
-    const review = new Review(info);
-    review
-      .save()
-      .then((data) => {
-        return review;
-      })
-      .catch((err) => {
-        if (!res.headersSent) {
-          res
-            .status(500)
-            .json({
-              message: err.message || "Error occured when creating review.",
-            });
-        }
-      });
-  } catch (err) {
-    if (!res.headersSent) {
-      res.status(500).json({ message: err.message });
-    }
-  }
-};
+// const addReviewByGameName = async (req, res, next) => {
+//   try {
+//     const info = {
+//       boardgame: req.oidc.boardgame.name,
+//     };
+//     const review = new Review(info);
+//     review
+//       .save()
+//       .then((data) => {
+//         return review;
+//       })
+//       .catch((err) => {
+//         if (!res.headersSent) {
+//           res
+//             .status(500)
+//             .json({
+//               message: err.message || "Error occured when creating review.",
+//             });
+//         }
+//       });
+//   } catch (err) {
+//     if (!res.headersSent) {
+//       res.status(500).json({ message: err.message });
+//     }
+//   }
+// };
 
 module.exports = {
   getReviews,
   getReview,
   addReview,
   editReview,
-  deleteReview,
-  getReviewByGameName,
-  addReviewByGameName,
+  delReview
 };
