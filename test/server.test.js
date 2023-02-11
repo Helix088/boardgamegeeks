@@ -83,10 +83,10 @@ describe('Test the boardgames route', () => {
 
   // patch
   it('should return 204 status code for PATCH', async() => {
-    const id = "63e564ee9a880c099bb405da";
+    const id = "63dee76bdd89d8f7b8e3a56d";
 
     const newcontent = {
-      name: 'Splendor'
+      name: 'Coup'
     };
 
     const response = await request(app)
@@ -128,7 +128,7 @@ describe('Test the sessions route', () => {
 
   // patch
   it('should return 204 status code for PATCH', async() => {
-    const id = "63e7d456abb3933695c5bc97";
+    const id = "63e3f91655f991b44d18e179";
 
     const newcontent = {
       victory: 'We all lost.'
@@ -205,7 +205,7 @@ describe('Test the reviews route', () => {
 
   // patch
   it("should return 204 status code for PATCH", async () => {
-    const id = "63e3f7f255f991b44d18e176";
+    const id = "63deedc162db381eb31750e0";
 
     const newcontent = {
       rating: "3.4",
@@ -269,7 +269,7 @@ describe('Test the users route', () => {
     const id = "63df257a86dcaa4bb10e131e";
 
     const newcontent = {
-      username: 'col0'
+      username: 'col'
     };
 
     const response = await request(app)
