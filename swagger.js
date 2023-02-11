@@ -9,12 +9,12 @@ const doc = {
   //Also change it in line 8 on swagger-output.js
   // "host": "boardgamegeeks.onrender.com",
 
-  // host: 'https://boardgamegeeks.onrender.com', 
-  host: 'localhost:3000',
+  host: 'https://boardgamegeeks.onrender.com', 
+  // host: 'localhost:3000',
 
   //this is originally  http but maybe I'll have to change it to https?
-  // schemes: ['https'],
-  schemes: ['http'],
+  schemes: ['https'],
+  // schemes: ['http'],
 };
 
 

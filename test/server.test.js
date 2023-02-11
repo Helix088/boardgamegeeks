@@ -24,7 +24,7 @@ const secretKey = process.env.SECRET;
 const token = jwt.sign(userInfo, secretKey);
 
 
-console.log(token);
+// console.log(token);
 
 
 describe('Test the root path', () => {
