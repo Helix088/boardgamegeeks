@@ -43,6 +43,14 @@ describe('Test the boardgames route', () => {
     expect(response.status).toBe(200);
   });
 
+  // get one
+  it('should return 200 status code for GET by Id', async () => {
+    const id = "63dc3f3314bc97827b68f52e";
+    
+    const response = await request(app).get(`/boardgames/${id}`);
+    expect(response.status).toBe(200);
+  });
+
   // post
   it('should return 201 status code for POST', async () => {
     const newgame = {
@@ -64,7 +72,7 @@ describe('Test the boardgames route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e6a7fa39d54d7bc8b2fb7d";
+    const id = "63e6adeafd53285b315f26ba";
 
     const response = await request(app)
     .delete(`/boardgames/${id}`)
@@ -99,9 +107,17 @@ describe('Test the sessions route', () => {
     expect(response.status).toBe(200);
   });  
 
+  // get one
+  it('should return 200 status code for GET by Id', async () => {
+    const id = "63deede362db381eb31750e5";
+    
+    const response = await request(app).get(`/sessions/${id}`);
+    expect(response.status).toBe(200);
+  });
+
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e168b7e64dd62e38799566";
+    const id = "63e7d449abb3933695c59a91";
 
     const response = await request(app)
     .delete(`/sessions/${id}`)
@@ -112,7 +128,7 @@ describe('Test the sessions route', () => {
 
   // patch
   it('should return 204 status code for PATCH', async() => {
-    const id = "63deede362db381eb31750e5";
+    const id = "63e7d456abb3933695c5bc97";
 
     const newcontent = {
       victory: 'We all lost.'
@@ -134,6 +150,14 @@ describe('Test the reviews route', () => {
     const response = await request(app).get("/reviews");
     expect(response.status).toBe(200);
   });
+
+  // get one
+  it('should return 200 status code for GET by Id', async () => {
+    const id = "63deecc8ebe718c158aff5a5";
+    
+    const response = await request(app).get(`/reviews/${id}`);
+    expect(response.status).toBe(200);
+  });  
 
   // post
   // it("should add a new review to the database", async () => {
@@ -171,7 +195,7 @@ describe('Test the reviews route', () => {
 
   //delete
   it("should return 200 status code for DELETE", async () => {
-    const id = "63e1676ee64dd62e38799555";
+    const id = "63e6cc723f8955e522c98aa2";
 
     const response = await request(app)
       .delete(`/reviews/${id}`)
@@ -198,9 +222,61 @@ describe('Test the reviews route', () => {
 });
 
 // USERS
-// describe('Test the users route', () => {
-//   it('should return 200 status code', async () => {
-//     const response = await request(app).get('/users');
-//     expect(response.status).toBe(200);
-//   });
-// });
+describe('Test the users route', () => {
+  // get
+  it('should return 200 status code for GET', async () => {
+    const response = await request(app).get('/users');
+    expect(response.status).toBe(200);
+  });
+
+  // get one
+  it('should return 200 status code for GET by Id', async () => {
+    const id = "63deeacf5f1e5e9d92a32277";
+    
+    const response = await request(app).get(`/users/${id}`);
+    expect(response.status).toBe(200);
+  });
+
+  // post
+  it('should return 201 status code for POST', async () => {
+    const newuser = {
+      username: 'col04002',
+      email: 'col04002@byui.edu'
+    };
+
+    const response = await request(app)
+    // .post('/users', {headers: {Authorization: `Bearer ${token}`}})
+    .post('/users')
+    .set('Authorization', `Bearer ${token}`)
+    .send(newuser);
+    // console.log(response)
+    expect(response.status).toBe(201);
+  });
+
+  // delete
+  it('should return 200 status code for DELETE', async() => {
+    const id = "63e2d52cc16edb10bf24918b";
+
+    const response = await request(app)
+    .delete(`/users/${id}`)
+    .set('Authorization', `Bearer ${token}`);    
+    // console.log(`Delete response: ${response}`);    
+    expect(response.status).toBe(200);
+  });
+
+  // patch
+  it('should return 204 status code for PATCH', async() => {
+    const id = "63df257a86dcaa4bb10e131e";
+
+    const newcontent = {
+      username: 'col0'
+    };
+
+    const response = await request(app)
+    .patch(`/users/${id}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(newcontent);
+    
+    expect(response.status).toBe(204);
+  });
+});
