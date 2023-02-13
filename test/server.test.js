@@ -12,13 +12,6 @@ const userInfo = {
   sub: "auth0|63cfee1d 293a9892122f6744",
   sid: "0lZ4zw516Kt-bT4oWOiKzQXwtpS3tYBV"
 };
-
-const oidc = {
-  user: {
-    nickname: "swordgeo1094",
-    email: "swordgeo1094@yahoo.com"
-  }
-};
   
 const secretKey = process.env.SECRET;
 const token = jwt.sign(userInfo, secretKey);
@@ -72,7 +65,7 @@ describe('Test the boardgames route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e7cf9795e7e8d53392e9b9";
+    const id = "63e7ed72f8c922a9702626de";
 
     const response = await request(app)
     .delete(`/boardgames/${id}`)
@@ -117,7 +110,7 @@ describe('Test the sessions route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e7e974a1e7ad4932598476"
+    const id = "63e7e96da1e7ad4932598473"
 
     const response = await request(app)
     .delete(`/sessions/${id}`)
@@ -195,7 +188,7 @@ describe('Test the reviews route', () => {
 
   //delete
   it("should return 200 status code for DELETE", async () => {
-    const id = "63e7e953a1e7ad493259846f";
+    const id = "63e7e952a1e7ad493259846c";
 
     const response = await request(app)
       .delete(`/reviews/${id}`)
@@ -255,7 +248,7 @@ describe('Test the users route', () => {
 
   // delete
   it('should return 200 status code for DELETE', async() => {
-    const id = "63e7d9dbfad2ca94536fa744";
+    const id = "63e7ed73f8c922a9702626ef";
 
     const response = await request(app)
     .delete(`/users/${id}`)
